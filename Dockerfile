@@ -23,12 +23,10 @@ RUN dos2unix /src/scripts/docker-package.sh && bash /src/scripts/docker-package.
 RUN cp /src/config.sample.json /src/webapp/config.json
 
 # App
-FROM nginx:alpine
+FROM nginxinc/nginx-unprivileged:stable-alpine
 
 COPY --from=builder /src/webapp /app
 
 # Override default nginx config
 COPY /nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
-RUN rm -rf /usr/share/nginx/html \
-  && ln -s /app /usr/share/nginx/html
