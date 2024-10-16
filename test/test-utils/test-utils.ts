@@ -674,7 +674,7 @@ export function mkServerConfig(
 // These methods make some use of some private methods on the AsyncStoreWithClient to simplify getting into a consistent
 // ready state without needing to wire up a dispatcher and pretend to be a js-sdk client.
 
-export const setupAsyncStoreWithClient = async <T extends Object = any>(
+export const setupAsyncStoreWithClient = async <T extends object = any>(
     store: AsyncStoreWithClient<T>,
     client: MatrixClient,
 ) => {
@@ -684,7 +684,7 @@ export const setupAsyncStoreWithClient = async <T extends Object = any>(
     await store.onReady();
 };
 
-export const resetAsyncStoreWithClient = async <T extends Object = any>(store: AsyncStoreWithClient<T>) => {
+export const resetAsyncStoreWithClient = async <T extends object = any>(store: AsyncStoreWithClient<T>) => {
     // @ts-ignore protected access
     await store.onNotReady();
 };
